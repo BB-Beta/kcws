@@ -4,7 +4,6 @@
 #include "kcws/cc/pos_tagger.h"
 #include "tensorflow/core/platform/init_main.h"
 
-DEFINE_int32(port, 9090, "the  api serving binding port");
 DEFINE_string(model_path, "kcws/models/seg_model.pbtxt", "the model path");
 DEFINE_string(vocab_path, "kcws/models/basic_vocab.txt", "char vocab path");
 DEFINE_string(pos_model_path, "kcws/models/pos_model.pbtxt", "the pos tagging model path");
@@ -35,23 +34,26 @@ int main(int argc, char** argv)
 	model.SetPosTagger(tagger);
 	}
 	//do segmentation
-	std::vector<std::string> result;
-	std::vector<std::string> tags;
-	std::string sentence;
-	while(getline(cin, sentence)){
+	while(true){
+		std::vector<std::string> result;
+        	std::vector<std::string> tags;
+		std::string sentence;
+		std::cout << "输入:"; 
+		std::cin >> sentence;
+		std::cout<<"******" << sentence << std::endl;
 		if (model.Segment(sentence, &result, &tags)) {
 			if (result.size() == tags.size()) {
 				for (int i = 0; i < result.size(); i++) {
-					printf('tok:%s\t\tpos:%s\n', result[i], tags[i]);
+					printf("tok:%s\t\tpos:%s\n", result[i].c_str(), tags[i].c_str());
 				}
 			} else {
 				for (std::string str : result) {
-					printf('tok:%s', str);
+					printf("tok:%s", str.c_str());
 				}
 			}
 		}
 		else{
-			printf('Segment Failed\n');
+			printf("Segment Failed\n");
 		}
 	}
 
