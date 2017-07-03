@@ -163,6 +163,18 @@ cc_binary(
     ],
 )
 
+cc_binary(
+    name = "seg_tools",
+    srcs = [
+        "seg_tools.cc",
+    ],
+    linkopts = ["-ldl"],
+    deps = [
+        ":tf_seg_model",
+        "//base",
+    ],
+)
+
 cc_library(
     name = "ac_scanner",
     srcs = [
