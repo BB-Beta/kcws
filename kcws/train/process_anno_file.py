@@ -91,10 +91,9 @@ def main(argc, argv):
   rootDir = argv[1]
   out = open(argv[2], "w")
   for dirName, subdirList, fileList in os.walk(rootDir):
-    curDir = os.path.join(rootDir, dirName)
     for file in fileList:
       if file.endswith(".txt"):
-        curFile = os.path.join(curDir, file)
+        curFile = os.path.join(dirName, file)
         # print("processing:%s" % (curFile))
         fp = open(curFile, "r")
         for line in fp.readlines():
