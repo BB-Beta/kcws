@@ -32,6 +32,7 @@ def process():
                         f_output.write('%s\t'%(label_dict[elem]))
                     else:
                         f_output.write('<pad>\t')
+                f_output.write('\n')
     
 if __name__ == '__main__':
     process()
