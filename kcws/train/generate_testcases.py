@@ -22,13 +22,13 @@ def process():
                 words = elems[:50]
                 labels = elems[300:]
                 for word in words:
-                    if word != 0:
+                    if word != '0':
                         f_output.write('%s\t'%(w2v_dict[word]))
                     else:
                         f_output.write('<pad>\t')
                 f_output.write('\n')
                 for elem in labels:
-                    if elem != 0:
+                    if elem != '0':
                         f_output.write('%s\t'%(label_dict[elem]))
                     else:
                         f_output.write('<pad>\t')
