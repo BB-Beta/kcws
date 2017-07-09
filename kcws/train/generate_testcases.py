@@ -18,9 +18,12 @@ def process():
     with open('test.txt', 'r') as f_input:
         with open('result.txt', 'w') as f_output:
             for line in f_input:
+                print(line)
                 elems = line.strip().split(' ')
                 words = elems[:50]
+                print(words)
                 labels = elems[300:]
+                print(labels)
                 for word in words:
                     if word != '0':
                         f_output.write('%s\t'%(w2v_dict[word]))
@@ -33,6 +36,7 @@ def process():
                     else:
                         f_output.write('<pad>\t')
                 f_output.write('\n')
+                exit()
     
 if __name__ == '__main__':
     process()

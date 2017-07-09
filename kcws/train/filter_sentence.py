@@ -8,7 +8,7 @@ import random
 
 
 def main(argc, argv):
-    if argc < 2:
+    if argc < 4:
         print("Usage:%s <input>" % (argv[0]))
         sys.exit(1)
     SENTENCE_LEN = 80
@@ -16,8 +16,8 @@ def main(argc, argv):
     nl = 0
     bad = 0
     test = 0
-    tr_p = open("train.txt", "w")
-    te_p = open("test.txt", "w")
+    tr_p = open(argv[2], "w")
+    te_p = open(argv[3], "w")
     while True:
         line = fp.readline()
         if not line:
